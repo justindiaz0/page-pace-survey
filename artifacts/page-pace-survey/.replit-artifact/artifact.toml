@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Page Pace Survey"
+version = "1.0.0"
+id = "artifacts/page-pace-survey"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24812
+
+[services.development]
+run = "pnpm --filter @workspace/page-pace-survey run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/page-pace-survey", "run", "build" ]
+publicDir = "artifacts/page-pace-survey/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24812"
+BASE_PATH = "/"

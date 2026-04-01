@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Page Pace Survey API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: survey
+    description: Survey operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /survey/submit:
+    post:
+      operationId: submitSurvey
+      tags: [survey]
+      summary: Submit a survey response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SurveySubmission"
+      responses:
+        "201":
+          description: Survey submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SurveyResponse"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /survey/results:
+    get:
+      operationId: getSurveyResults
+      tags: [survey]
+      summary: Get aggregated survey results
+      responses:
+        "200":
+          description: Aggregated survey results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SurveyResults"
+
+  /survey/responses:
+    get:
+      operationId: listSurveyResponses
+      tags: [survey]
+      summary: List all survey responses
+      responses:
+        "200":
+          description: List of responses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SurveyResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    SurveySubmission:
+      type: object
+      properties:
+        reading_frequency:
+          type: string
+          description: "How often the respondent reads for personal enjoyment"
+        reading_time:
+          type: string
+          description: "When the respondent usually plans to read"
+        distractions:
+          type: array
+          items:
+            type: string
+          description: "What distracts the respondent from reading"
+        motivation:
+          type: array
+          items:
+            type: string
+          description: "What helps the respondent stay consistent"
+        skipping_feeling:
+          type: string
+          description: "How the respondent feels when they skip reading"
+        consistency_helpers:
+          type: array
+          items:
+            type: string
+          description: "Things that help with reading consistency"
+        struggle_reason:
+          type: string
+          description: "Why the respondent struggles to read consistently"
+      required:
+        - reading_frequency
+        - reading_time
+        - distractions
+        - motivation
+        - skipping_feeling
+        - consistency_helpers
+        - struggle_reason
+
+    SurveyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        reading_frequency:
+          type: string
+        reading_time:
+          type: string
+        distractions:
+          type: array
+          items:
+            type: string
+        motivation:
+          type: array
+          items:
+            type: string
+        skipping_feeling:
+          type: string
+        consistency_helpers:
+          type: array
+          items:
+            type: string
+        struggle_reason:
+          type: string
+      required:
+        - id
+        - created_at
+        - reading_frequency
+        - reading_time
+        - distractions
+        - motivation
+        - skipping_feeling
+        - consistency_helpers
+        - struggle_reason
+
+    SurveyResults:
+      type: object
+      properties:
+        total_responses:
+          type: integer
+          description: Total number of survey responses
+        reading_frequency_distribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/FrequencyCount"
+          description: Distribution of reading frequency answers
+        reading_time_distribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/FrequencyCount"
+          description: Distribution of preferred reading times
+        distractions_distribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/FrequencyCount"
+          description: Distribution of common distractions
+        skipping_feeling_distribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/FrequencyCount"
+          description: Distribution of skipping feelings
+        consistency_helpers_distribution:
+          type: array
+          items:
+            $ref: "#/components/schemas/FrequencyCount"
+          description: Distribution of consistency helpers
+      required:
+        - total_responses
+        - reading_frequency_distribution
+        - reading_time_distribution
+        - distractions_distribution
+        - skipping_feeling_distribution
+        - consistency_helpers_distribution
+
+    FrequencyCount:
+      type: object
+      properties:
+        label:
+          type: string
+        count:
+          type: integer
+      required:
+        - label
+        - count
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error

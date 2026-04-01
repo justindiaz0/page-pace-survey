@@ -1,0 +1,129 @@
+Export the working survey from Replit
+Have Replit create a README.
+
+Generate a professional README.md for my project.
+Use actual project details — no generic placeholder text. 
+Output Markdown only.
+Put this README.md file in the root of the project directory.
+
+Sections (in order):
+
+1. PROJECT TITLE 
+2. DESCRIPTION — 2–4 sentences: what it does, why it exists, who it's for 
+3. BADGES — shields.io badges (for-the-badge style) for languages and license used. 
+4. FEATURES — 4–8 bullet points from the user's perspective
+5. TECH STACK — markdown table: Technology | Purpose
+6. GETTING STARTED
+   - Prerequisites (with download links)
+   - Installation (numbered steps with exact terminal commands)
+7. USAGE — how to run and use the app; any config options
+8. PROJECT STRUCTURE — fenced file tree with one-line comments per file
+9. CHANGELOG — v1.0.0 entry with today's date
+10. KNOWN ISSUES / TO-DO — at least 3 items using `- [ ]` syntax
+11. ROADMAP — 3–5 future feature bullets
+12. CONTRIBUTING — short paragraph + numbered fork/PR steps
+13. LICENSE — MIT License statement with link to LICENSE file
+14. AUTHOR — name, institution, course
+15. CONTACT — link to GitHub profile
+16. ACKNOWLEDGEMENTS — credit tutorials, tools, docs, and AI assistants used.
+
+Format: ATX headings, fenced code blocks, output Markdown only — no preamble or explanation.
+
+ 
+
+Have Replit structure the application so it can run on Azure Static Web App
+
+I plan to run this on Azure as a Static Web App. What changes need to be made to this 
+project to run in that environment?
+
+If it returns information about adding a staticwebapp.config.json file, allow the AI to fix this. 
+
+You do not need to do anything about build settings, environment variables, or Supabase origins. We will handle those in steps below.
+
+ 
+
+Ask Replit where VITE is putting the build files:
+
+
+What is the output directory for VITE?
+
+Write this down.
+
+ 
+
+Have Replit create a WORKING_NOTES.md file
+
+
+Generate a WORKING_NOTES.md for my project using the files in this project.
+This is an internal document for the developer and AI assistants — not public-facing.
+Use actual project details. Output Markdown only — no preamble or explanation.
+Put this WORKING_NOTES.md file in the root of the project directory.  Sections (in order):
+
+1. TITLE AND HEADER NOTICE
+   - Title: "Working Notes — [Project Name]"
+   - Blockquote: internal document, not public, update at end of every session
+
+2. HOW TO USE THIS FILE (FOR AI ASSISTANTS)
+   Numbered instructions telling any AI to: read this entire file first; read
+   README.md for public context; not change folder structure or conventions
+   without discussion; follow all conventions exactly; not suggest anything
+   listed in "What Was Tried and Rejected"; ask before making large structural
+   changes; refactor conservatively if the project was vibe coded or AI-assisted.
+
+3. CURRENT STATE
+   - Last Updated: today's date
+   - Brief honest description of current project state
+   - Three checklists: What Is Working / What Is Partially Built / What Is Not Started
+
+4. CURRENT TASK
+   - What I was working on when I last stopped (2–3 sentences)
+   - The single next step needed
+
+5. ARCHITECTURE AND TECH STACK
+   Table: Technology | Version | Why It Was Chosen
+
+6. PROJECT STRUCTURE NOTES
+   - Fenced file tree
+   - Notes on non-obvious decisions
+   - Files/folders that must not be changed without discussion
+
+7. DATA / DATABASE
+   If database: table with Field | Type | Required | Notes per table.
+   If flat files: document each file's schema.
+   If no persistent data: state that explicitly.
+
+8. CONVENTIONS
+   Subsections for: naming conventions, code style, framework patterns, git commit style.
+
+9. DECISIONS AND TRADEOFFS
+   Bullet per decision: **Decision made:** reason. Do not suggest reversing this.
+
+10. WHAT WAS TRIED AND REJECTED
+    Bullet per abandoned approach with reason. AI must not suggest these again.
+
+11. KNOWN ISSUES AND WORKAROUNDS
+    Per issue: what the problem is, whether a workaround exists, what it does,
+    and that it must not be removed.
+
+12. BROWSER / ENVIRONMENT COMPATIBILITY
+    Front-end: browsers tested, expected support, known incompatibilities.
+    Back-end: OS, language version, environment dependencies.
+
+13. OPEN QUESTIONS
+    Unresolved decisions to revisit before building affected features.
+
+14. SESSION LOG
+    One entry for today: ### YYYY-MM-DD / accomplished / left incomplete /
+    decisions made / next step.
+
+15. USEFUL REFERENCES
+    Links to docs, tutorials, resources. Note any AI tools used and how.
+
+Format: ATX headings, fenced code blocks, no placeholder text.
+
+ 
+
+Export from Replit
+On the right side of the Replit window, click to enable the file tree. 
+
+From the three vertical dot menu, choose Download as zip
